@@ -114,8 +114,15 @@ struct EnvVar
 
     explicit EnvVar(const char* const name, const T& def_val)
     {
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable : 4996) // _CRT_SECURE_NO_WARNINGS
+#endif
         // NOLINTNEXTLINE (concurrency-mt-unsafe)
         const char* vp = std::getenv(name);
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
         if(vp != nullptr) // a value was provided
         {
             is_unset = false;
