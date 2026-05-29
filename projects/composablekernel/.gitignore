@@ -141,3 +141,5 @@ dispatcher/heuristics/.pytest_cache/
 
 # CLAUDE markdown files
 CLAUDE.md
+
+*_hip.hpp
